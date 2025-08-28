@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Analytics Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9fafb;
+            margin: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        canvas {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>📊 HR Analytics Dashboard</h1>
+
+    <div class="dashboard">
+        <div class="card">
+            <h3>Attrition by Department</h3>
+            <canvas id="deptChart"></canvas>
+        </div>
+
+        <div class="card">
+            <h3>Attrition by Job Role</h3>
+            <canvas id="roleChart"></canvas>
+        </div>
+
+        <div class="card">
+            <h3>Attrition by Age Group</h3>
+            <canvas id="ageChart"></canvas>
+        </div>
+
+        <div class="card">
+            <h3>Attrition by Gender</h3>
+            <canvas id="genderChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Example static data (replace with dynamic data later)
+        const deptChart = new Chart(document.getElementById('deptChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Sales', 'Research & Dev', 'HR'],
+                datasets: [{
+                    label: 'Attrition Count',
+                    data: [50, 70, 20],
+                    backgroundColor: ['#60a5fa', '#34d399', '#f87171']
+                }]
+            }
+        });
+
+        const roleChart = new Chart(document.getElementById('roleChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Sales Executive', 'Research Scientist', 'Manager', 'HR'],
+                datasets: [{
+                    data: [40, 30, 15, 10],
+                    backgroundColor: ['#fbbf24', '#34d399', '#60a5fa', '#f87171']
+                }]
+            }
+        });
+
+        const ageChart = new Chart(document.getElementById('ageChart'), {
+            type: 'line',
+            data: {
+                labels: ['20-25', '26-30', '31-35', '36-40', '41-50'],
+                datasets: [{
+                    label: 'Attrition Rate %',
+                    data: [20, 35, 25, 15, 10],
+                    borderColor: '#6366f1',
+                    fill: false
+                }]
+            }
+        });
+
+        const genderChart = new Chart(document.getElementById('genderChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Male', 'Female'],
+                datasets: [{
+                    data: [60, 40],
+                    backgroundColor: ['#3b82f6', '#f472b6']
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
